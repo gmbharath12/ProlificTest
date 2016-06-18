@@ -41,7 +41,7 @@ NSString *const bookURL = @"http://prolific-interview.herokuapp.com/5764751072b5
 }
 
 
-+ (NSArray *)parseJsonObject:(id)books
++ (NSMutableArray *)parseJsonObject:(id)books
 {
     
     NSMutableArray *dataArray = [NSMutableArray new];

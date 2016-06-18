@@ -8,5 +8,6 @@ platform :ios, '8.0'
 
 target 'Prolific' do
 pod 'AFNetworking', '~> 3.0'
+pod 'UIAlertController+Blocks', '~> 0.9'
 end
 

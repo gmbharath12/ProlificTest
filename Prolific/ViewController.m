@@ -11,6 +11,7 @@
 #import "Book.h"
 #import "CustomCell.h"
 #import "DetailViewController.h"
+#import <UIAlertController+Blocks.h>
 
 #define kRowHeight 70
 
@@ -30,7 +31,6 @@
 }
 
 - (void)additionalSetUp {
-    
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.title = @"Books";
     [self.booksTableView registerClass:[CustomCell class] forCellReuseIdentifier:@"BookCell"];
@@ -62,17 +62,22 @@
 
 #pragma mark Alert View
 - (void)showAlertView:(NSString *)string {
-    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@""
-                                                                    message:string                                                         preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* ok = [UIAlertAction
-                         actionWithTitle:@"OK"
-                         style:UIAlertActionStyleDefault
-                         handler:^(UIAlertAction * action) {
-                             [alert dismissViewControllerAnimated:YES completion:nil];
-                             
-                         }];
-    [alert addAction:ok];
-    [self presentViewController:alert animated:YES completion:nil];
+    
+    [UIAlertController showAlertInViewController:self
+                                       withTitle:@""
+                                         message:string
+                               cancelButtonTitle:nil
+                          destructiveButtonTitle:@"OK"
+                               otherButtonTitles:nil
+                                        tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
+                                            if (buttonIndex == controller.cancelButtonIndex) {
+                                               // NSLog(@"Cancel Tapped");
+                                            } else if (buttonIndex == controller.destructiveButtonIndex) {
+                                                //NSLog(@"Delete Tapped");
+                                            } else if (buttonIndex >= controller.firstOtherButtonIndex) {
+                                               // NSLog(@"Other Button Index %ld", (long)buttonIndex - controller.firstOtherButtonIndex);
+                                            }
+                                        }];
 }
 
 
