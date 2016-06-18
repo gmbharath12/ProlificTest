@@ -10,6 +10,7 @@
 #import "ServiceManager.h"
 #import "Book.h"
 #import "CustomCell.h"
+#import "DetailViewController.h"
 
 #define kRowHeight 70
 
@@ -109,7 +110,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BookCell" forIndexPath:indexPath];
-    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+//    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     Book *book = [[self dataArray] objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:[book title]];
     [[cell detailTextLabel] setText:[book author]];
@@ -129,6 +130,13 @@
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"accessoryButtonTappedForRowWithIndexPath");
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
+    [self.navigationController pushViewController:viewController animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 

@@ -16,6 +16,7 @@
 		BD5494691D14BC8A00F45D60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5494681D14BC8A00F45D60 /* Assets.xcassets */; };
 		BD54946C1D14BC8A00F45D60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD54946A1D14BC8A00F45D60 /* LaunchScreen.storyboard */; };
 		BD7C00B91D153B56006201B7 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7C00B81D153B56006201B7 /* CustomCell.m */; };
+		BD7C00C01D155678006201B7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7C00BF1D155678006201B7 /* DetailViewController.m */; };
 		BDDE1D2C1D14E49E00523F0D /* ServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDE1D2B1D14E49E00523F0D /* ServiceManager.m */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,8 @@
 		BD54946D1D14BC8A00F45D60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD7C00B71D153B56006201B7 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		BD7C00B81D153B56006201B7 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		BD7C00BE1D155678006201B7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		BD7C00BF1D155678006201B7 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		BDDE1D2A1D14E49E00523F0D /* ServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceManager.h; sourceTree = "<group>"; };
 		BDDE1D2B1D14E49E00523F0D /* ServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceManager.m; sourceTree = "<group>"; };
 		D4EACA60C7803ADD462AFAA7 /* Pods-Prolific.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Prolific.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Prolific/Pods-Prolific.debug.xcconfig"; sourceTree = "<group>"; };
@@ -96,6 +99,8 @@
 				BD7C00BA1D153D11006201B7 /* NetworkHandle */,
 				BD5494621D14BC8A00F45D60 /* ViewController.h */,
 				BD5494631D14BC8A00F45D60 /* ViewController.m */,
+				BD7C00BE1D155678006201B7 /* DetailViewController.h */,
+				BD7C00BF1D155678006201B7 /* DetailViewController.m */,
 				BD7C00BB1D153D39006201B7 /* CustomView */,
 				BD7C00BC1D153D56006201B7 /* Model */,
 				BD5494651D14BC8A00F45D60 /* Main.storyboard */,
@@ -277,6 +282,7 @@
 				BD5494611D14BC8A00F45D60 /* AppDelegate.m in Sources */,
 				BD54945E1D14BC8A00F45D60 /* main.m in Sources */,
 				BDDE1D2C1D14E49E00523F0D /* ServiceManager.m in Sources */,
+				BD7C00C01D155678006201B7 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
