@@ -15,7 +15,7 @@
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *booksTableView;
-@property (strong, nonatomic) NSArray *dataArray;
+@property (strong, nonatomic) NSMutableArray *dataArray;
 @end
 
 @implementation ViewController
@@ -25,24 +25,28 @@
     //additional setup after view is loaded
     [self additionalSetUp];
     [self fetchData];
+
 }
 
 - (void)additionalSetUp {
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.title = @"Books";
     [self.booksTableView registerClass:[CustomCell class] forCellReuseIdentifier:@"BookCell"];
+    self.booksTableView.allowsMultipleSelectionDuringEditing = NO;
     UIBarButtonItem *menuItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                               target:self
-                                                                              action:@selector(addBook: )];
+                                                                              action:@selector(addBook:)];
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear" style:UIBarButtonItemStylePlain target:self action:@selector(clearAllAction:)];
     [self.navigationItem setLeftBarButtonItem:menuItem];
-
+    [self.navigationItem setRightBarButtonItem:editButton];
 }
 
 
 #pragma mark Fetch Data
 
 - (void) fetchData {
-    [ServiceManager requestBookData:^(NSArray *bookData, NSError *error) {
+    [ServiceManager requestBookData:^(NSMutableArray *bookData, NSError *error) {
          dispatch_async(dispatch_get_main_queue(), ^{
              if (error) {
                  [self showAlertView:[error localizedDescription]];
@@ -56,7 +60,6 @@
 }
 
 #pragma mark Alert View
-
 - (void)showAlertView:(NSString *)string {
     UIAlertController * alert = [UIAlertController alertControllerWithTitle:@""
                                                                     message:string                                                         preferredStyle:UIAlertControllerStyleAlert];
@@ -77,11 +80,26 @@
     
 }
 
+#pragma mark EditAction
+- (void)clearAllAction:(UIBarButtonItem*)sender {
+    
+    //clear all items.
+    if (!self.editing) {
+        [super setEditing:YES animated:YES];
+        [self.dataArray removeAllObjects];
+        [self.booksTableView reloadData];
+        [self.navigationItem setRightBarButtonItem:nil];
+    }
+    else {
+        [super setEditing:NO animated:YES];
+        [self.booksTableView setEditing:NO animated:YES];
+        [self.navigationItem.rightBarButtonItem setTitle:@"Clear"];
+    }
+}
 
 #pragma mark TableView Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     return [[self dataArray] count];
 }
 
@@ -89,9 +107,7 @@
     return kRowHeight;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BookCell" forIndexPath:indexPath];
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     Book *book = [[self dataArray] objectAtIndex:[indexPath row]];
@@ -100,9 +116,20 @@
     return cell;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
 }
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.dataArray removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"accessoryButtonTappedForRowWithIndexPath");
+}
+
 
 @end

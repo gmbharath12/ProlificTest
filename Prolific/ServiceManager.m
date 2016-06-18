@@ -19,7 +19,7 @@ NSString *const bookURL = @"http://prolific-interview.herokuapp.com/5764751072b5
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     NSData *bookData = nil;
     NSError *error = nil;
-    NSArray *dataArray = nil;
+    NSMutableArray *dataArray = nil;
     bookData = [NSData dataWithContentsOfURL:[NSURL URLWithString:bookURL]];
     if (!bookData)
     {

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^ServiceCompletionBlock)(NSArray *cardObject, NSError *error);
+typedef void (^ServiceCompletionBlock)(NSMutableArray *cardObject, NSError *error);
 
 @interface ServiceManager : NSObject
 
