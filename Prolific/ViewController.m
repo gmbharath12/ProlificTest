@@ -7,9 +7,11 @@
 //
 
 #import "ViewController.h"
-
+#define kRowHeight 70
 
 @interface ViewController ()
+@property (nonatomic, strong) IBOutlet UITableView *booksTableView;
+@property (nonatomic, strong) NSArray *dataArray;
 
 @end
 
@@ -18,10 +20,51 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationItem.title = @"Books";
+    //additional setup after view is loaded
+    [self additionalSetUp];
+
     
+}
+
+- (void)additionalSetUp
+{
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.title = @"Books";
+    [self.booksTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"BookCell"];
+
+    UIBarButtonItem *menuItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                              target:self
+                                                                              action:@selector(addBook:)];
+    [self.navigationItem setLeftBarButtonItem:menuItem];
+
+}
+
+#pragma mark AddBook 
+- (void)addBook:(id)sender
+{
+    
+}
+
+
+#pragma mark TableView Methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    return 100;
+   // return [self.dataArray count];
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return kRowHeight;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BookCell"];
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning {
