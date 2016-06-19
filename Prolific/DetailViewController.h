@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CheckOutViewController.h"
+#import <AFHTTPSessionManager.h>
+
 @class Book;
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController <CheckOutViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *bookTitle;
 @property (weak, nonatomic) IBOutlet UILabel *author;
@@ -19,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lastCheckedBy;
 @property (weak, nonatomic) IBOutlet UIButton *checkOutButton;
 @property (weak, nonatomic) Book *book;
+
+@property (strong, nonatomic) AFHTTPSessionManager *sessionManager;
+
 
 - (IBAction)share:(id)sender;
 - (IBAction)checkOutButtonAction:(id)sender;

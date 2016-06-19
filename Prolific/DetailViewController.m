@@ -9,11 +9,11 @@
 #import "DetailViewController.h"
 #import "Book.h"
 
+//NSString const *baseURL = @"http://prolific-interview.herokuapp.com/5764751072b55d00097eab85/";
 
 @implementation DetailViewController
 
 - (void)viewDidLoad {
-    
     NSLog(@"Book Details %@", self.book);
     //\ToDo: Update constraints when one of them is null?
     self.bookTitle.text = (!([[self book] title] == (NSString*)[NSNull null])) ? [[self book] title] : nil;
@@ -44,7 +44,40 @@
      
 - (IBAction)checkOutButtonAction:(id)sender {
     
-         
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"CheckOut"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        CheckOutViewController *checkOutViewController = [navigationController viewControllers][0];
+        checkOutViewController.delegate = self;
+    }
+}
+
+
+- (void)checkOutUserName:(NSString*)userName {
+    NSString  *baseURL = @"http://prolific-interview.herokuapp.com";
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSSZZZZ"]; //yyyy-MM-dd HH:mm:ss zzz
+    NSLog(@"%@",[dateFormatter stringFromDate:[NSDate date]]);
+    self.sessionManager =   [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
+    self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+    NSDictionary *parameters = @{@"author": self.book.author,
+                                 @"categories": self.book.categories,
+                                 @"id": self.book.bookID,
+                                 @"lastCheckedOut":[dateFormatter stringFromDate:[NSDate date]],
+                                 @"lastCheckedOutBy":userName,
+                                 @"publisher":self.book.publisher,
+                                 @"title":self.book.title,
+                                 @"url":self.book.url};
+    [self.sessionManager PUT:[NSString stringWithFormat:@"/5764751072b55d00097eab85%@",self.book.url] parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        self.title = @"Book updated";
+        NSLog(@"Response Object %@", (NSDictionary*)responseObject);
+        self.lastCheckedBy.text = [NSString stringWithFormat:@"%@ @ %@",[responseObject valueForKey:@"lastCheckedOutBy"], [responseObject valueForKey:@"lastCheckedOut"]];
+    }  failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"\n ERROR \n %@",error.userInfo);
+    }];
 }
 
 @end
