@@ -62,7 +62,6 @@
 
 #pragma mark Alert View
 - (void)showAlertView:(NSString *)string {
-    
     [UIAlertController showAlertInViewController:self
                                        withTitle:@""
                                          message:string
@@ -71,11 +70,11 @@
                                otherButtonTitles:nil
                                         tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
                                             if (buttonIndex == controller.cancelButtonIndex) {
-                                               // NSLog(@"Cancel Tapped");
+                                                // NSLog(@"Cancel Tapped");
                                             } else if (buttonIndex == controller.destructiveButtonIndex) {
                                                 //NSLog(@"Delete Tapped");
                                             } else if (buttonIndex >= controller.firstOtherButtonIndex) {
-                                               // NSLog(@"Other Button Index %ld", (long)buttonIndex - controller.firstOtherButtonIndex);
+                                                // NSLog(@"Other Button Index %ld", (long)buttonIndex - controller.firstOtherButtonIndex);
                                             }
                                         }];
 }
@@ -88,7 +87,6 @@
 
 #pragma mark EditAction
 - (void)clearAllAction:(UIBarButtonItem*)sender {
-    
     //clear all items.
     if (!self.editing) {
         [super setEditing:YES animated:YES];
@@ -139,7 +137,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
+    DetailViewController *viewController = (DetailViewController*)[storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
+    viewController.book = self.dataArray[indexPath.row];
     [self.navigationController pushViewController:viewController animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

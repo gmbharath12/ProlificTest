@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Book;
 
 @interface DetailViewController : UIViewController
 
@@ -17,9 +18,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *lastCheckedOut;
 @property (weak, nonatomic) IBOutlet UILabel *lastCheckedBy;
 @property (weak, nonatomic) IBOutlet UIButton *checkOutButton;
+@property (weak, nonatomic) Book *book;
 
 - (IBAction)share:(id)sender;
-
+- (IBAction)checkOutButtonAction:(id)sender;
 
 
 @end

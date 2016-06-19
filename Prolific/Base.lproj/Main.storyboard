@@ -60,11 +60,11 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNo-Mb-wni">
                                 <rect key="frame" x="20" y="74" width="560" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hex-av-4Bd" userLabel="Author">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hex-av-4Bd" userLabel="Author">
                                 <rect key="frame" x="20" y="119" width="560" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -83,20 +83,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Checked By:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuE-8D-qI3">
-                                <rect key="frame" x="20" y="235" width="560" height="21"/>
+                                <rect key="frame" x="20" y="236" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLd-wy-cGx">
-                                <rect key="frame" x="20" y="207" width="560" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LastCheckedOut" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLd-wy-cGx">
+                                <rect key="frame" x="20" y="207" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcg-Xz-vxu">
-                                <rect key="frame" x="20" y="291.5" width="560" height="57.5"/>
+                                <rect key="frame" x="20" y="293" width="560" height="56"/>
                                 <state key="normal" title="CheckOut"/>
+                                <connections>
+                                    <action selector="checkOutButtonAction:" destination="VTA-Ig-JT2" eventType="touchUpInside" id="eNz-0z-ns0"/>
+                                    <segue destination="qvb-lr-zNw" kind="presentation" identifier="CheckOut" id="qB4-O1-PVV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -147,6 +151,49 @@
             </objects>
             <point key="canvasLocation" x="1281" y="296"/>
         </scene>
+        <!--CheckOutView-->
+        <scene sceneID="sNq-Hx-U4A">
+            <objects>
+                <viewController storyboardIdentifier="checkOutViewController" id="Dne-Sf-vL9" customClass="CheckOutViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ojn-0e-eNT"/>
+                        <viewControllerLayoutGuide type="bottom" id="iCd-k9-Vj3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WDP-4c-di0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yqh-cd-VS1">
+                                <rect key="frame" x="20" y="113" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Dne-Sf-vL9" id="MVQ-js-Rr7"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yqh-cd-VS1" firstAttribute="top" secondItem="ojn-0e-eNT" secondAttribute="bottom" constant="49" id="OCK-Eh-hZq"/>
+                            <constraint firstItem="yqh-cd-VS1" firstAttribute="trailing" secondItem="WDP-4c-di0" secondAttribute="trailingMargin" id="gaZ-w9-WEB"/>
+                            <constraint firstItem="yqh-cd-VS1" firstAttribute="leading" secondItem="WDP-4c-di0" secondAttribute="leadingMargin" id="qXv-aI-XV4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="CheckOutView" id="IXM-tv-20V">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="QCk-89-mb0">
+                            <connections>
+                                <action selector="doneAction:" destination="Dne-Sf-vL9" id="bvb-m0-yiF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="yqh-cd-VS1" id="ZeR-E6-pqL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rvh-Up-F2w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2741" y="296"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="oQB-Il-coq">
             <objects>
@@ -182,6 +229,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s1Y-9B-piV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="478" y="296"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="g7q-30-Dmp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qvb-lr-zNw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dfJ-2P-gbR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Dne-Sf-vL9" kind="relationship" relationship="rootViewController" id="WBa-iv-2db"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vgy-iS-gYP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1929" y="296"/>
         </scene>
     </scenes>
 </document>
