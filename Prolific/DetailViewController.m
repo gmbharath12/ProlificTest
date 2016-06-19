@@ -58,11 +58,10 @@
 
 
 - (void)checkOutUserName:(NSString*)userName {
-    NSString  *baseURL = @"http://prolific-interview.herokuapp.com";
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSSZZZZ"]; //yyyy-MM-dd HH:mm:ss zzz
     NSLog(@"%@",[dateFormatter stringFromDate:[NSDate date]]);
-    self.sessionManager =   [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
+    self.sessionManager =   [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kBaseURL]];
     self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
     self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
     NSDictionary *parameters = @{@"author": self.book.author,

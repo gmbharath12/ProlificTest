@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AFHTTPSessionManager.h>
 
 @interface AddViewController : UIViewController
 

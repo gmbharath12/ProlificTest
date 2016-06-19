@@ -88,6 +88,7 @@
     //clear all items.
     if (!self.editing) {
         [super setEditing:YES animated:YES];
+        [self deleteBook:nil withClearAll:YES];
         [self.dataArray removeAllObjects];
         [self.booksTableView reloadData];
         [self.navigationItem setRightBarButtonItem:nil];
@@ -124,9 +125,9 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self deleteBook:self.dataArray[indexPath.row] withClearAll:NO];
         [self.dataArray removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        
     }
 }
 
@@ -143,4 +144,29 @@
 }
 
 
+#pragma mark Delete Book
+- (void)deleteBook:(Book*)book withClearAll:(bool)clearAll {
+    self.sessionManager =   [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kBaseURL]];
+    self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+    if (!clearAll) {
+        [self.sessionManager DELETE:[NSString stringWithFormat:@"/5764751072b55d00097eab85%@",book.url] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSLog(@"Response Object %@", (NSDictionary*)responseObject);
+        }  failure:^(NSURLSessionDataTask *task, NSError *error) {
+            NSLog(@"\n ERROR \n %@",error.userInfo);
+        }];
+    }
+    else {
+        
+        NSLog(@"Delete All");
+//        NSString *relativeURL = @"/clean";
+//        [self.sessionManager DELETE:[NSString stringWithFormat:@"/5764751072b55d00097eab85%@",relativeURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//            NSLog(@"Response Object %@", (NSDictionary*)responseObject);
+//        }  failure:^(NSURLSessionDataTask *task, NSError *error) {
+//            NSLog(@"\n ERROR \n %@",error.userInfo);
+//        }];
+    }
+    
+
+}
 @end

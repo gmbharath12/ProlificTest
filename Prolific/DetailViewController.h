@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "CheckOutViewController.h"
-#import <AFHTTPSessionManager.h>
 
 @class Book;
 
