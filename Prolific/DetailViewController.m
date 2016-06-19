@@ -9,8 +9,6 @@
 #import "DetailViewController.h"
 #import "Book.h"
 
-//NSString const *baseURL = @"http://prolific-interview.herokuapp.com/5764751072b55d00097eab85/";
-
 @implementation DetailViewController
 
 - (void)viewDidLoad {

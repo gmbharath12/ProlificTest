@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AFHTTPSessionManager.h>
 
 @interface AddViewController : UIViewController
 
@@ -14,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *authorTextField;
 @property (weak, nonatomic) IBOutlet UITextField *publisherTextField;
 @property (weak, nonatomic) IBOutlet UITextField *categoryField;
+@property (strong, nonatomic) AFHTTPSessionManager *sessionManager;
 
 - (IBAction)submitButtonAction:(id)sender;
 
