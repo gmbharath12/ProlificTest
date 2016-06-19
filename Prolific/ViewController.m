@@ -12,6 +12,7 @@
 #import "CustomCell.h"
 #import "DetailViewController.h"
 #import <UIAlertController+Blocks.h>
+#import "AddViewController.h"
 
 #define kRowHeight 70
 
@@ -82,7 +83,12 @@
 
 #pragma mark AddBook 
 - (void)addBook:(id)sender {
-    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    AddViewController *addViewController = (AddViewController*)[storyboard instantiateViewControllerWithIdentifier:
+                                                                @"AddViewController"];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:addViewController];
+    [self presentViewController:navController animated:YES completion:nil];
+
 }
 
 #pragma mark EditAction

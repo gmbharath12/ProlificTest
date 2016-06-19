@@ -61,37 +61,37 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNo-Mb-wni">
                                 <rect key="frame" x="20" y="74" width="560" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hex-av-4Bd" userLabel="Author">
                                 <rect key="frame" x="20" y="119" width="560" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Publisher:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzZ-dl-R5j" userLabel="Publisher">
                                 <rect key="frame" x="20" y="150" width="560" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tags:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPu-ia-Kvd">
                                 <rect key="frame" x="20" y="178" width="560" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Checked By:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuE-8D-qI3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Checked By:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuE-8D-qI3">
                                 <rect key="frame" x="20" y="236" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LastCheckedOut" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLd-wy-cGx">
                                 <rect key="frame" x="20" y="207" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcg-Xz-vxu">
@@ -150,6 +150,88 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8HH-TR-yTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1281" y="296"/>
+        </scene>
+        <!--AddBook-->
+        <scene sceneID="jus-4j-oTi">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c14-GZ-5Yu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="AddViewController" title="AddBook" id="eaa-zs-IYq" customClass="AddViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kQP-5d-Gq5"/>
+                        <viewControllerLayoutGuide type="bottom" id="104-Zg-Tjy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Iul-yf-5Ss">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Book Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wrX-GN-kV2">
+                                <rect key="frame" x="20" y="28" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eaa-zs-IYq" id="g0W-Bl-zns"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Author" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WYL-16-3cy">
+                                <rect key="frame" x="20" y="66" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eaa-zs-IYq" id="lxQ-YK-KtB"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Publisher" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MTv-bq-tNu">
+                                <rect key="frame" x="20" y="104" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eaa-zs-IYq" id="0rF-9s-1xt"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Categories" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yYf-7h-7NK">
+                                <rect key="frame" x="20" y="142" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eaa-zs-IYq" id="mkK-2n-XkA"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ec-VS-PLM">
+                                <rect key="frame" x="20" y="214" width="560" height="30"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitButtonAction:" destination="eaa-zs-IYq" eventType="touchUpInside" id="lOY-oy-F50"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MTv-bq-tNu" firstAttribute="trailing" secondItem="Iul-yf-5Ss" secondAttribute="trailingMargin" id="03V-Y9-gyG"/>
+                            <constraint firstItem="wrX-GN-kV2" firstAttribute="top" secondItem="kQP-5d-Gq5" secondAttribute="bottom" constant="8" id="2fz-iE-A5X"/>
+                            <constraint firstItem="WYL-16-3cy" firstAttribute="top" secondItem="wrX-GN-kV2" secondAttribute="bottom" constant="8" id="4aJ-7J-RmI"/>
+                            <constraint firstItem="wrX-GN-kV2" firstAttribute="trailing" secondItem="Iul-yf-5Ss" secondAttribute="trailingMargin" id="9ab-Y3-MnV"/>
+                            <constraint firstItem="yYf-7h-7NK" firstAttribute="leading" secondItem="Iul-yf-5Ss" secondAttribute="leadingMargin" id="BD1-Fe-yuU"/>
+                            <constraint firstItem="MTv-bq-tNu" firstAttribute="top" secondItem="WYL-16-3cy" secondAttribute="bottom" constant="8" id="RYG-8G-Bmj"/>
+                            <constraint firstItem="WYL-16-3cy" firstAttribute="trailing" secondItem="Iul-yf-5Ss" secondAttribute="trailingMargin" id="aSg-dU-wz3"/>
+                            <constraint firstItem="7Ec-VS-PLM" firstAttribute="trailing" secondItem="Iul-yf-5Ss" secondAttribute="trailingMargin" id="atz-lW-3mM"/>
+                            <constraint firstItem="yYf-7h-7NK" firstAttribute="top" secondItem="MTv-bq-tNu" secondAttribute="bottom" constant="8" id="bLz-eS-Ewh"/>
+                            <constraint firstItem="WYL-16-3cy" firstAttribute="leading" secondItem="Iul-yf-5Ss" secondAttribute="leadingMargin" id="eLa-09-v3u"/>
+                            <constraint firstItem="wrX-GN-kV2" firstAttribute="leading" secondItem="Iul-yf-5Ss" secondAttribute="leadingMargin" id="mDM-M7-V8f"/>
+                            <constraint firstItem="104-Zg-Tjy" firstAttribute="top" secondItem="7Ec-VS-PLM" secondAttribute="bottom" constant="356" id="mKZ-LX-eH8"/>
+                            <constraint firstItem="MTv-bq-tNu" firstAttribute="leading" secondItem="Iul-yf-5Ss" secondAttribute="leadingMargin" id="pQv-zd-gDg"/>
+                            <constraint firstItem="7Ec-VS-PLM" firstAttribute="leading" secondItem="Iul-yf-5Ss" secondAttribute="leadingMargin" id="q73-Qt-Gon"/>
+                            <constraint firstItem="yYf-7h-7NK" firstAttribute="trailing" secondItem="Iul-yf-5Ss" secondAttribute="trailingMargin" id="xkE-jh-YVm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="authorTextField" destination="WYL-16-3cy" id="0NE-bL-P2i"/>
+                        <outlet property="categoryField" destination="yYf-7h-7NK" id="U0o-e2-L7k"/>
+                        <outlet property="publisherTextField" destination="MTv-bq-tNu" id="9tM-u9-qN1"/>
+                        <outlet property="titleTextField" destination="wrX-GN-kV2" id="ZmN-TC-BDu"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="4318" y="-873"/>
         </scene>
         <!--CheckOutView-->
         <scene sceneID="sNq-Hx-U4A">

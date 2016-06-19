@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A183F9C2319C4215922C062F /* libPods-Prolific.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30867937A76D9546321131DD /* libPods-Prolific.a */; };
+		BD226A9F1D164CA400A75AE1 /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD226A9E1D164CA400A75AE1 /* AddViewController.m */; };
 		BD3871A41D14E9C700A7DCD6 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3871A31D14E9C700A7DCD6 /* Book.m */; };
 		BD54945E1D14BC8A00F45D60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD54945D1D14BC8A00F45D60 /* main.m */; };
 		BD5494611D14BC8A00F45D60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5494601D14BC8A00F45D60 /* AppDelegate.m */; };
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		15630A68C9D21C045B97B0E4 /* Pods-Prolific.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Prolific.release.xcconfig"; path = "Pods/Target Support Files/Pods-Prolific/Pods-Prolific.release.xcconfig"; sourceTree = "<group>"; };
 		30867937A76D9546321131DD /* libPods-Prolific.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Prolific.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD226A9D1D164CA400A75AE1 /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
+		BD226A9E1D164CA400A75AE1 /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
 		BD3871A21D14E9C700A7DCD6 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
 		BD3871A31D14E9C700A7DCD6 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
 		BD5494591D14BC8A00F45D60 /* Prolific.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prolific.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +108,8 @@
 				BD7C00BA1D153D11006201B7 /* NetworkHandle */,
 				BD5494621D14BC8A00F45D60 /* ViewController.h */,
 				BD5494631D14BC8A00F45D60 /* ViewController.m */,
+				BD226A9D1D164CA400A75AE1 /* AddViewController.h */,
+				BD226A9E1D164CA400A75AE1 /* AddViewController.m */,
 				BD7C00BE1D155678006201B7 /* DetailViewController.h */,
 				BD7C00BF1D155678006201B7 /* DetailViewController.m */,
 				BD7C00C41D160467006201B7 /* CheckOutViewController.h */,
@@ -286,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD226A9F1D164CA400A75AE1 /* AddViewController.m in Sources */,
 				BD7C00C61D160467006201B7 /* CheckOutViewController.m in Sources */,
 				BD3871A41D14E9C700A7DCD6 /* Book.m in Sources */,
 				BD5494641D14BC8A00F45D60 /* ViewController.m in Sources */,
