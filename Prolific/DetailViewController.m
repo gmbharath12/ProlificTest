@@ -19,7 +19,11 @@
     NSLog(@"publisher %@", [[self book] publisher]);
     self.publisher.text = (!([[self book] publisher] == (NSString*)[NSNull null])) ? [NSString stringWithFormat:@"Publisher: %@",[[self book] publisher]] : nil;
     self.tags.text = (!([[self book] categories] == (NSString*)[NSNull null])) ? [NSString stringWithFormat:@"Tags: %@", [[self book] categories]] : nil;
+    NSString *checkedOutAt = (!([[self book] lastCheckedOut] == (NSString*)[NSNull null])) ? [[self book] lastCheckedOut] : nil;
     self.lastCheckedBy.text = (!([[self book] lastCheckedOutBy] == (NSString*)[NSNull null])) ? [[self book] lastCheckedOutBy] : nil;
+    if (checkedOutAt) {
+        self.lastCheckedBy.text = [NSString stringWithFormat:@"%@ @ %@",self.lastCheckedBy.text, checkedOutAt];
+    }
 }
 
 - (IBAction)share:(id)sender {
