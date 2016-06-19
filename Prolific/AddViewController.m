@@ -35,8 +35,7 @@
 }
 
 - (void)post {
-    NSString  *baseURL = @"http://prolific-interview.herokuapp.com";
-    self.sessionManager =   [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
+    self.sessionManager =   [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kBaseURL]];
     self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
     self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
     NSDictionary *parameters = @{@"author": self.authorTextField.text,
@@ -67,11 +66,7 @@
                                    otherButtonTitles:nil
                                             tapBlock:nil];
     }];
-
 }
-
-
-
 
 - (BOOL)textFieldShouldReturn:(UITextField*)textField {
     [textField resignFirstResponder];

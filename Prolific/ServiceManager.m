@@ -10,8 +10,6 @@
 #import "AppDelegate.h"
 #import "Book.h"
 
-NSString *const bookURL = @"http://prolific-interview.herokuapp.com/5764751072b55d00097eab85/books";
-
 @implementation ServiceManager
 
 + (void)requestBookData:(ServiceCompletionBlock)completionBlock
@@ -20,7 +18,7 @@ NSString *const bookURL = @"http://prolific-interview.herokuapp.com/5764751072b5
     NSData *bookData = nil;
     NSError *error = nil;
     NSMutableArray *dataArray = nil;
-    bookData = [NSData dataWithContentsOfURL:[NSURL URLWithString:bookURL]];
+    bookData = [NSData dataWithContentsOfURL:[NSURL URLWithString:kAbsoluteURL]];
     if (!bookData)
     {
         error = [NSError errorWithDomain:@"Error"
