@@ -16,6 +16,7 @@
 		BD5494671D14BC8A00F45D60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD5494651D14BC8A00F45D60 /* Main.storyboard */; };
 		BD5494691D14BC8A00F45D60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5494681D14BC8A00F45D60 /* Assets.xcassets */; };
 		BD54946C1D14BC8A00F45D60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD54946A1D14BC8A00F45D60 /* LaunchScreen.storyboard */; };
+		BD630EB11D17BAFA00FF3DDE /* Prolific.png in Resources */ = {isa = PBXBuildFile; fileRef = BD630EB01D17BAFA00FF3DDE /* Prolific.png */; };
 		BD7C00B91D153B56006201B7 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7C00B81D153B56006201B7 /* CustomCell.m */; };
 		BD7C00C01D155678006201B7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7C00BF1D155678006201B7 /* DetailViewController.m */; };
 		BD7C00C31D15E332006201B7 /* APRoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7C00C21D15E332006201B7 /* APRoundedButton.m */; };
@@ -42,6 +43,7 @@
 		BD5494681D14BC8A00F45D60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD54946B1D14BC8A00F45D60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD54946D1D14BC8A00F45D60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD630EB01D17BAFA00FF3DDE /* Prolific.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Prolific.png; sourceTree = "<group>"; };
 		BD7C00B71D153B56006201B7 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		BD7C00B81D153B56006201B7 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		BD7C00BE1D155678006201B7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				BD54946D1D14BC8A00F45D60 /* Info.plist */,
 				BD5494681D14BC8A00F45D60 /* Assets.xcassets */,
+				BD630EB01D17BAFA00FF3DDE /* Prolific.png */,
 				BD54946A1D14BC8A00F45D60 /* LaunchScreen.storyboard */,
 			);
 			name = Resources;
@@ -237,6 +240,7 @@
 				BD54946C1D14BC8A00F45D60 /* LaunchScreen.storyboard in Resources */,
 				BD5494691D14BC8A00F45D60 /* Assets.xcassets in Resources */,
 				BD5494671D14BC8A00F45D60 /* Main.storyboard in Resources */,
+				BD630EB11D17BAFA00FF3DDE /* Prolific.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

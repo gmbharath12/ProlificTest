@@ -11,7 +11,9 @@
 @implementation CheckOutViewController
 
 - (IBAction)doneAction:(id)sender {
-    [self.delegate checkOutUserName:self.nameTextField.text];
+    if (self.nameTextField.text.length > 0) {
+        [self.delegate checkOutUserName:self.nameTextField.text];
+    }
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 

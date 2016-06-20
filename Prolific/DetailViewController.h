@@ -11,7 +11,10 @@
 
 @class Book;
 
-@interface DetailViewController : UIViewController <CheckOutViewControllerDelegate>
+@interface DetailViewController : UIViewController <CheckOutViewControllerDelegate> {
+    NSDateFormatter *dateFormatter;
+
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *bookTitle;
 @property (weak, nonatomic) IBOutlet UILabel *author;

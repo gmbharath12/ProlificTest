@@ -7,14 +7,12 @@
 //
 
 #import "AddViewController.h"
-#import <UIAlertController+Blocks.h>
 #import "Book.h"
 
 @implementation AddViewController
 
 - (void)viewDidLoad {
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonAction:)] ;
-
 }
 
 - (IBAction)submitButtonAction:(id)sender {
@@ -30,7 +28,6 @@
     }
     else {
         [self post];
-        
     }
 }
 
@@ -91,6 +88,7 @@
 }
 
 - (void)doneButtonAction:(id)sender {
+    [self.view endEditing:YES];
     if ([[self addedBooks] count] > 0) {
         [self.delegate newBooksArray:self.addedBooks];
     }

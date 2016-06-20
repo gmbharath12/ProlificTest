@@ -11,7 +11,6 @@
 #import "Book.h"
 #import "CustomCell.h"
 #import "DetailViewController.h"
-#import <UIAlertController+Blocks.h>
 #import "AddViewController.h"
 
 #define kRowHeight 70
@@ -112,7 +111,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BookCell" forIndexPath:indexPath];
-//    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     Book *book = [[self dataArray] objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:[book title]];
     [[cell detailTextLabel] setText:[book author]];
@@ -129,10 +127,6 @@
         [self.dataArray removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
-}
-
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"accessoryButtonTappedForRowWithIndexPath");
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -189,11 +183,9 @@
 
 #pragma mark AddViewController Delegate
 - (void)newBooksArray:(NSMutableArray *)bookArray {
-    
     for (Book *lbook in bookArray) {
         [self.dataArray addObject:lbook];
     }
-    NSLog(@"\n Total no of books %lu\n", (unsigned long)[self.dataArray count]);
     [self.booksTableView reloadData];
 }
 
