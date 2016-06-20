@@ -112,14 +112,9 @@
 				BD54945F1D14BC8A00F45D60 /* AppDelegate.h */,
 				BD5494601D14BC8A00F45D60 /* AppDelegate.m */,
 				BD7C00BA1D153D11006201B7 /* NetworkHandle */,
-				BD5494621D14BC8A00F45D60 /* ViewController.h */,
-				BD5494631D14BC8A00F45D60 /* ViewController.m */,
-				BD226A9D1D164CA400A75AE1 /* AddViewController.h */,
-				BD226A9E1D164CA400A75AE1 /* AddViewController.m */,
-				BD7C00BE1D155678006201B7 /* DetailViewController.h */,
-				BD7C00BF1D155678006201B7 /* DetailViewController.m */,
-				BD7C00C41D160467006201B7 /* CheckOutViewController.h */,
-				BD7C00C51D160467006201B7 /* CheckOutViewController.m */,
+				BD81CFB11D17DE6300F1D8CE /* Main View */,
+				BD81CFB01D17DE4A00F1D8CE /* Add Book */,
+				BD81CFAF1D17DE2B00F1D8CE /* Details Screen */,
 				BD7C00BB1D153D39006201B7 /* CustomView */,
 				BD7C00BC1D153D56006201B7 /* Model */,
 				BD5494651D14BC8A00F45D60 /* Main.storyboard */,
@@ -151,8 +146,6 @@
 			children = (
 				BD7C00C11D15E332006201B7 /* APRoundedButton.h */,
 				BD7C00C21D15E332006201B7 /* APRoundedButton.m */,
-				BD7C00B71D153B56006201B7 /* CustomCell.h */,
-				BD7C00B81D153B56006201B7 /* CustomCell.m */,
 			);
 			name = CustomView;
 			sourceTree = "<group>";
@@ -175,6 +168,37 @@
 				BD54946A1D14BC8A00F45D60 /* LaunchScreen.storyboard */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		BD81CFAF1D17DE2B00F1D8CE /* Details Screen */ = {
+			isa = PBXGroup;
+			children = (
+				BD7C00BE1D155678006201B7 /* DetailViewController.h */,
+				BD7C00BF1D155678006201B7 /* DetailViewController.m */,
+				BD7C00C41D160467006201B7 /* CheckOutViewController.h */,
+				BD7C00C51D160467006201B7 /* CheckOutViewController.m */,
+			);
+			name = "Details Screen";
+			sourceTree = "<group>";
+		};
+		BD81CFB01D17DE4A00F1D8CE /* Add Book */ = {
+			isa = PBXGroup;
+			children = (
+				BD226A9D1D164CA400A75AE1 /* AddViewController.h */,
+				BD226A9E1D164CA400A75AE1 /* AddViewController.m */,
+			);
+			name = "Add Book";
+			sourceTree = "<group>";
+		};
+		BD81CFB11D17DE6300F1D8CE /* Main View */ = {
+			isa = PBXGroup;
+			children = (
+				BD5494621D14BC8A00F45D60 /* ViewController.h */,
+				BD5494631D14BC8A00F45D60 /* ViewController.m */,
+				BD7C00B71D153B56006201B7 /* CustomCell.h */,
+				BD7C00B81D153B56006201B7 /* CustomCell.m */,
+			);
+			name = "Main View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

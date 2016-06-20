@@ -83,8 +83,9 @@
     book.url = [responseObject valueForKey:@"url"];
     if (!self.addedBooks) {
         self.addedBooks = [NSMutableArray new];
-        [self.addedBooks addObject:book];
     }
+    [self.addedBooks addObject:book];
+
 }
 
 - (void)doneButtonAction:(id)sender {

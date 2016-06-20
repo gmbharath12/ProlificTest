@@ -150,10 +150,10 @@
             </objects>
             <point key="canvasLocation" x="1281" y="296"/>
         </scene>
-        <!--AddBook-->
+        <!--Add Book-->
         <scene sceneID="jus-4j-oTi">
             <objects>
-                <viewController storyboardIdentifier="AddViewController" title="AddBook" id="eaa-zs-IYq" customClass="AddViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddViewController" title="Add Book" id="eaa-zs-IYq" customClass="AddViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kQP-5d-Gq5"/>
                         <viewControllerLayoutGuide type="bottom" id="104-Zg-Tjy"/>

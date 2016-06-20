@@ -18,7 +18,6 @@
     self.publisher.text = (!([[self book] publisher] == (NSString*)[NSNull null])) ? [NSString stringWithFormat:@"Publisher: %@",[[self book] publisher]] : nil;
     self.tags.text = (!([[self book] categories] == (NSString*)[NSNull null])) ? [NSString stringWithFormat:@"Tags: %@", [[self book] categories]] : nil;
     NSString *checkedOutAt = (!([[self book] lastCheckedOut] == (NSString*)[NSNull null])) ? [[self book] lastCheckedOut] : nil;
-    
     self.lastCheckedBy.text = (!([[self book] lastCheckedOutBy] == (NSString*)[NSNull null])) ? [[self book] lastCheckedOutBy] : nil;
     if (checkedOutAt) {
        NSString *formattedString =  [self formatDateForAString:checkedOutAt];
@@ -42,6 +41,9 @@
     return updatedString;
 }
 
+/**
+ Book details can be shared to Twitter/Facebook
+ */
 - (IBAction)share:(id)sender {
     NSString *bookTitle = [NSString stringWithFormat:@"Title: %@",[[self book] title]];
     NSString *author = [NSString stringWithFormat:@"by: %@",[[self book] author]];
@@ -59,7 +61,7 @@
     [self presentViewController:activityController animated:YES completion:nil];
 }
 
-     
+
 - (IBAction)checkOutButtonAction:(id)sender {
     //handled through storyboard
 }
@@ -73,6 +75,7 @@
 }
 
 
+#pragma mark CheckOutViewControllerDelegate
 - (void)checkOutUserName:(NSString*)userName {
     if (!dateFormatter) {
         dateFormatter=[[NSDateFormatter alloc] init];
@@ -103,7 +106,6 @@
                               destructiveButtonTitle:@"OK"
                                    otherButtonTitles:nil
                                             tapBlock:nil];
-        
     }];
 }
 

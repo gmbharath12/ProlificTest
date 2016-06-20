@@ -30,6 +30,15 @@
 
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    if (self.dataArray.count > 0) {
+        [self hideClearButton:NO];
+    }
+    else {
+        [self hideClearButton:YES];
+    }
+}
+
 - (void)additionalSetUp {
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.title = @"Books";
@@ -45,14 +54,19 @@
 
 
 #pragma mark Fetch Data
-
+// GET request
 - (void) fetchData {
     [ServiceManager requestBookData:^(NSMutableArray *bookData, NSError *error) {
          dispatch_async(dispatch_get_main_queue(), ^{
              if (error) {
-                 [self showAlertView:[error localizedDescription]];
+                 [self showAlertViewWithTitle:@"Error" message:[error localizedDescription]];
              } else {
                  self.dataArray = bookData;
+                 if (self.dataArray.count == 0)
+                     [self hideClearButton:YES];
+                 else{
+                     [self hideClearButton:NO];
+                 }
                  [self.booksTableView reloadData];
              }
          });
@@ -60,11 +74,11 @@
     
 }
 
-#pragma mark Alert View
-- (void)showAlertView:(NSString *)string {
+#pragma mark Show Alert View
+- (void)showAlertViewWithTitle:(NSString*)title message:(NSString *)message {
     [UIAlertController showAlertInViewController:self
-                                       withTitle:@""
-                                         message:string
+                                       withTitle:@"title"
+                                         message:message
                                cancelButtonTitle:nil
                           destructiveButtonTitle:@"OK"
                                otherButtonTitles:nil
@@ -72,7 +86,7 @@
 }
 
 
-#pragma mark AddBook 
+#pragma mark AddBook Action
 - (void)addBook:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     AddViewController *addViewController = (AddViewController*)[storyboard instantiateViewControllerWithIdentifier:
@@ -82,25 +96,51 @@
     [self presentViewController:navController animated:YES completion:nil];
 }
 
-#pragma mark EditAction
-- (void)clearAllAction:(UIBarButtonItem*)sender {
-    //clear all items.
-    if (!self.editing) {
-        [super setEditing:YES animated:YES];
-        [self deleteBook:nil withClearAll:YES];
-        [self.dataArray removeAllObjects];
-        [self.booksTableView reloadData];
-        [self.navigationItem setRightBarButtonItem:nil];
+//this is an hack to hide/show right bar button item.
+- (void)hideClearButton:(bool)hide {
+    if (hide) {
+        self.navigationItem.rightBarButtonItem.enabled = false;
+        self.navigationItem.rightBarButtonItem.title = nil;
     }
     else {
-        [super setEditing:NO animated:YES];
-        [self.booksTableView setEditing:NO animated:YES];
-        [self.navigationItem.rightBarButtonItem setTitle:@"Clear"];
+        self.navigationItem.rightBarButtonItem.enabled = true;
+        self.navigationItem.rightBarButtonItem.title = @"Clear";
     }
 }
 
-#pragma mark TableView Methods
+#pragma mark EditAction
+- (void)clearAllAction:(UIBarButtonItem*)sender {
+    //clear all items.
+        [UIAlertController showAlertInViewController:self
+                                           withTitle:@"Clear All"
+                                             message:@"Are you sure you want to delete all entries ?"
+                                   cancelButtonTitle:@"NO"
+                              destructiveButtonTitle:@"YES"
+                                   otherButtonTitles:nil
+                                    tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                                        if (buttonIndex == 1) {
+                                            NSLog(@"YES");
+                                            NSLog(@"Delete All");
+                                            if (!self.sessionManager) {
+                                                self.sessionManager =   [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kBaseURL]];
+                                                self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+                                                self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+                                            }
+                                            NSString *relativeURL = @"/clean";
+                                            [self.sessionManager DELETE:[NSString stringWithFormat:@"/5764751072b55d00097eab85%@",relativeURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+                                                NSLog(@"Response Object %@", (NSDictionary*)responseObject);
+                                                [self.dataArray removeAllObjects];
+                                                [self.booksTableView reloadData];
+                                                [self hideClearButton:YES];
+                                            }  failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                                NSLog(@"\n ERROR \n %@",error.userInfo);
+                                                [self showAlertViewWithTitle:@"Error" message:@"There's an error in deleting all book entries. Please try again"];
+                                            }];
+                                        }
+                                    }];
+}
 
+#pragma mark TableView Delegate and Datasource Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [[self dataArray] count];
 }
@@ -123,9 +163,23 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self deleteBook:self.dataArray[indexPath.row] withClearAll:NO];
-        [self.dataArray removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        //web service call
+        Book *lbook = self.dataArray[indexPath.row];
+        if (!self.sessionManager) {
+            self.sessionManager =   [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kBaseURL]];
+            self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+            self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+        }
+            [self.sessionManager DELETE:[NSString stringWithFormat:@"/5764751072b55d00097eab85%@",lbook.url] parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                [self.dataArray removeObjectAtIndex:indexPath.row];
+                [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                if (self.dataArray.count == 0) {
+                    [self hideClearButton:YES];
+                }
+            }   failure:^(NSURLSessionDataTask *task, NSError *error) {
+                NSLog(@"\n ERROR \n %@",error.userInfo);
+                [self showAlertViewWithTitle:@"Error" message:@"There's an error in deleting a book entry. Please try again"];
+            }];
     }
 }
 
@@ -138,50 +192,8 @@
 }
 
 
-#pragma mark Delete Book
-- (void)deleteBook:(Book*)book withClearAll:(bool)clearAll {
-    self.sessionManager =   [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kBaseURL]];
-    self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
-    self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
-    if (!clearAll) {
-        [self.sessionManager DELETE:[NSString stringWithFormat:@"/5764751072b55d00097eab85%@",book.url] parameters:nil success:nil  failure:^(NSURLSessionDataTask *task, NSError *error) {
-            NSLog(@"\n ERROR \n %@",error.userInfo);
-            [UIAlertController showAlertInViewController:self
-                                               withTitle:@"Error"
-                                                 message:@"There's an error in deleting a book entry. Please check back later"
-                                       cancelButtonTitle:nil
-                                  destructiveButtonTitle:@"OK"
-                                       otherButtonTitles:nil
-                                                tapBlock:nil];
-        }];
-    }
-    else {
-        NSLog(@"Delete All");
-//        NSString *relativeURL = @"/clean";
-//        [self.sessionManager DELETE:[NSString stringWithFormat:@"/5764751072b55d00097eab85%@",relativeURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-//            NSLog(@"Response Object %@", (NSDictionary*)responseObject);
-//            [UIAlertController showAlertInViewController:self
-//                                               withTitle:@"Success"
-//                                                 message:@"All book entries deleted"
-//                                       cancelButtonTitle:nil
-//                                  destructiveButtonTitle:@"OK"
-//                                       otherButtonTitles:nil
-//                                                tapBlock:nil];
-//        }  failure:^(NSURLSessionDataTask *task, NSError *error) {
-//            NSLog(@"\n ERROR \n %@",error.userInfo);
-//            [UIAlertController showAlertInViewController:self
-//                                               withTitle:@"Error"
-//                                                 message:@"There's an error in deleting all book entries. Please check back later"
-//                                       cancelButtonTitle:nil
-//                                  destructiveButtonTitle:@"OK"
-//                                       otherButtonTitles:nil
-//                                                tapBlock:nil];
-//        }];
-    }
-    
-}
-
 #pragma mark AddViewController Delegate
+//this is called when we tap on "DONE" button
 - (void)newBooksArray:(NSMutableArray *)bookArray {
     for (Book *lbook in bookArray) {
         [self.dataArray addObject:lbook];
