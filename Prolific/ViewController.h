@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddViewController.h"
 
-@interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, AddViewControllerDelegate>
 
 @property (strong, nonatomic) AFHTTPSessionManager *sessionManager;
 

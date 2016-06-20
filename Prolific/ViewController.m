@@ -78,9 +78,9 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     AddViewController *addViewController = (AddViewController*)[storyboard instantiateViewControllerWithIdentifier:
                                                                 @"AddViewController"];
+    addViewController.delegate = self;
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:addViewController];
     [self presentViewController:navController animated:YES completion:nil];
-
 }
 
 #pragma mark EditAction
@@ -150,16 +150,7 @@
     self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
     self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
     if (!clearAll) {
-        [self.sessionManager DELETE:[NSString stringWithFormat:@"/5764751072b55d00097eab85%@",book.url] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"Response Object %@", (NSDictionary*)responseObject);
-            [UIAlertController showAlertInViewController:self
-                                               withTitle:@"Success"
-                                                 message:@"A book entry is deleted"
-                                       cancelButtonTitle:nil
-                                  destructiveButtonTitle:@"OK"
-                                       otherButtonTitles:nil
-                                                tapBlock:nil];
-        }  failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self.sessionManager DELETE:[NSString stringWithFormat:@"/5764751072b55d00097eab85%@",book.url] parameters:nil success:nil  failure:^(NSURLSessionDataTask *task, NSError *error) {
             NSLog(@"\n ERROR \n %@",error.userInfo);
             [UIAlertController showAlertInViewController:self
                                                withTitle:@"Error"
@@ -171,7 +162,6 @@
         }];
     }
     else {
-        
         NSLog(@"Delete All");
 //        NSString *relativeURL = @"/clean";
 //        [self.sessionManager DELETE:[NSString stringWithFormat:@"/5764751072b55d00097eab85%@",relativeURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -195,6 +185,16 @@
 //        }];
     }
     
-
 }
+
+#pragma mark AddViewController Delegate
+- (void)newBooksArray:(NSMutableArray *)bookArray {
+    
+    for (Book *lbook in bookArray) {
+        [self.dataArray addObject:lbook];
+    }
+    NSLog(@"\n Total no of books %lu\n", (unsigned long)[self.dataArray count]);
+    [self.booksTableView reloadData];
+}
+
 @end

@@ -8,7 +8,7 @@
 
 #import "AddViewController.h"
 #import <UIAlertController+Blocks.h>
-
+#import "Book.h"
 
 @implementation AddViewController
 
@@ -53,6 +53,7 @@
                               destructiveButtonTitle:@"OK"
                                    otherButtonTitles:nil
                                             tapBlock:nil];
+        [self parseResponseDictionary:responseObject];
         self.authorTextField.text = @"";
         self.categoryField.text = @"";
         self.publisherTextField.text = @"";
@@ -73,8 +74,26 @@
     return YES;
 }
 
+- (void)parseResponseDictionary:(NSDictionary*)responseObject {
+    Book *book  = [[Book alloc] init];
+    book.author = [responseObject valueForKey:@"author"];
+    book.categories = [responseObject valueForKey:@"categories"];
+    book.bookID = [responseObject valueForKey:@"id"];
+    book.lastCheckedOut = [responseObject valueForKey:@"lastCheckedOut"];
+    book.lastCheckedOutBy = [responseObject valueForKey:@"lastCheckedOutBy"];
+    book.publisher = [responseObject valueForKey:@"publisher"];
+    book.title = [responseObject valueForKey:@"title"];
+    book.url = [responseObject valueForKey:@"url"];
+    if (!self.addedBooks) {
+        self.addedBooks = [NSMutableArray new];
+        [self.addedBooks addObject:book];
+    }
+}
 
 - (void)doneButtonAction:(id)sender {
+    if ([[self addedBooks] count] > 0) {
+        [self.delegate newBooksArray:self.addedBooks];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

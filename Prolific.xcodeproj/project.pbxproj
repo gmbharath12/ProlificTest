@@ -26,10 +26,10 @@
 /* Begin PBXFileReference section */
 		15630A68C9D21C045B97B0E4 /* Pods-Prolific.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Prolific.release.xcconfig"; path = "Pods/Target Support Files/Pods-Prolific/Pods-Prolific.release.xcconfig"; sourceTree = "<group>"; };
 		30867937A76D9546321131DD /* libPods-Prolific.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Prolific.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD16F5EB1D179001009058F8 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		BD226A9D1D164CA400A75AE1 /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		BD226A9E1D164CA400A75AE1 /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
-		BD226AA01D17230900A75AE1 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Prolific/Constants.h; sourceTree = "<group>"; };
-		BD226AA11D1724AC00A75AE1 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		BD226AA01D17230900A75AE1 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BD3871A21D14E9C700A7DCD6 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
 		BD3871A31D14E9C700A7DCD6 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
 		BD5494591D14BC8A00F45D60 /* Prolific.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prolific.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,8 +87,6 @@
 		BD5494501D14BC8A00F45D60 = {
 			isa = PBXGroup;
 			children = (
-				BD226AA11D1724AC00A75AE1 /* PrefixHeader.pch */,
-				BD226AA01D17230900A75AE1 /* Constants.h */,
 				BD54945B1D14BC8A00F45D60 /* Prolific */,
 				BD54945A1D14BC8A00F45D60 /* Products */,
 				344EE71384973E10F64F5543 /* Pods */,
@@ -107,6 +105,8 @@
 		BD54945B1D14BC8A00F45D60 /* Prolific */ = {
 			isa = PBXGroup;
 			children = (
+				BD16F5EB1D179001009058F8 /* PrefixHeader.pch */,
+				BD226AA01D17230900A75AE1 /* Constants.h */,
 				BD54945F1D14BC8A00F45D60 /* AppDelegate.h */,
 				BD5494601D14BC8A00F45D60 /* AppDelegate.m */,
 				BD7C00BA1D153D11006201B7 /* NetworkHandle */,
@@ -358,7 +358,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/gmbharath/Desktop/Prolific/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
