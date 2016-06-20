@@ -152,8 +152,22 @@
     if (!clearAll) {
         [self.sessionManager DELETE:[NSString stringWithFormat:@"/5764751072b55d00097eab85%@",book.url] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
             NSLog(@"Response Object %@", (NSDictionary*)responseObject);
+            [UIAlertController showAlertInViewController:self
+                                               withTitle:@"Success"
+                                                 message:@"A book entry is deleted"
+                                       cancelButtonTitle:nil
+                                  destructiveButtonTitle:@"OK"
+                                       otherButtonTitles:nil
+                                                tapBlock:nil];
         }  failure:^(NSURLSessionDataTask *task, NSError *error) {
             NSLog(@"\n ERROR \n %@",error.userInfo);
+            [UIAlertController showAlertInViewController:self
+                                               withTitle:@"Error"
+                                                 message:@"There's an error in deleting a book entry. Please check back later"
+                                       cancelButtonTitle:nil
+                                  destructiveButtonTitle:@"OK"
+                                       otherButtonTitles:nil
+                                                tapBlock:nil];
         }];
     }
     else {
@@ -162,8 +176,22 @@
 //        NSString *relativeURL = @"/clean";
 //        [self.sessionManager DELETE:[NSString stringWithFormat:@"/5764751072b55d00097eab85%@",relativeURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
 //            NSLog(@"Response Object %@", (NSDictionary*)responseObject);
+//            [UIAlertController showAlertInViewController:self
+//                                               withTitle:@"Success"
+//                                                 message:@"All book entries deleted"
+//                                       cancelButtonTitle:nil
+//                                  destructiveButtonTitle:@"OK"
+//                                       otherButtonTitles:nil
+//                                                tapBlock:nil];
 //        }  failure:^(NSURLSessionDataTask *task, NSError *error) {
 //            NSLog(@"\n ERROR \n %@",error.userInfo);
+//            [UIAlertController showAlertInViewController:self
+//                                               withTitle:@"Error"
+//                                                 message:@"There's an error in deleting all book entries. Please check back later"
+//                                       cancelButtonTitle:nil
+//                                  destructiveButtonTitle:@"OK"
+//                                       otherButtonTitles:nil
+//                                                tapBlock:nil];
 //        }];
     }
     

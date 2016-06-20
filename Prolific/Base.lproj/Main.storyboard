@@ -154,18 +154,17 @@
         <!--AddBook-->
         <scene sceneID="jus-4j-oTi">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c14-GZ-5Yu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="AddViewController" title="AddBook" id="eaa-zs-IYq" customClass="AddViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kQP-5d-Gq5"/>
                         <viewControllerLayoutGuide type="bottom" id="104-Zg-Tjy"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Iul-yf-5Ss">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Book Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wrX-GN-kV2">
-                                <rect key="frame" x="20" y="28" width="560" height="30"/>
+                                <rect key="frame" x="20" y="28" width="374" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -173,7 +172,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Author" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WYL-16-3cy">
-                                <rect key="frame" x="20" y="66" width="560" height="30"/>
+                                <rect key="frame" x="20" y="66" width="374" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -181,7 +180,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Publisher" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MTv-bq-tNu">
-                                <rect key="frame" x="20" y="104" width="560" height="30"/>
+                                <rect key="frame" x="20" y="104" width="374" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -189,7 +188,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Categories" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yYf-7h-7NK">
-                                <rect key="frame" x="20" y="142" width="560" height="30"/>
+                                <rect key="frame" x="20" y="142" width="374" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -197,7 +196,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ec-VS-PLM">
-                                <rect key="frame" x="20" y="214" width="560" height="30"/>
+                                <rect key="frame" x="20" y="214" width="374" height="30"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submitButtonAction:" destination="eaa-zs-IYq" eventType="touchUpInside" id="lOY-oy-F50"/>
@@ -206,23 +205,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="MTv-bq-tNu" firstAttribute="trailing" secondItem="Iul-yf-5Ss" secondAttribute="trailingMargin" id="03V-Y9-gyG"/>
-                            <constraint firstItem="wrX-GN-kV2" firstAttribute="top" secondItem="kQP-5d-Gq5" secondAttribute="bottom" constant="8" id="2fz-iE-A5X"/>
-                            <constraint firstItem="WYL-16-3cy" firstAttribute="top" secondItem="wrX-GN-kV2" secondAttribute="bottom" constant="8" id="4aJ-7J-RmI"/>
-                            <constraint firstItem="wrX-GN-kV2" firstAttribute="trailing" secondItem="Iul-yf-5Ss" secondAttribute="trailingMargin" id="9ab-Y3-MnV"/>
-                            <constraint firstItem="yYf-7h-7NK" firstAttribute="leading" secondItem="Iul-yf-5Ss" secondAttribute="leadingMargin" id="BD1-Fe-yuU"/>
-                            <constraint firstItem="MTv-bq-tNu" firstAttribute="top" secondItem="WYL-16-3cy" secondAttribute="bottom" constant="8" id="RYG-8G-Bmj"/>
-                            <constraint firstItem="WYL-16-3cy" firstAttribute="trailing" secondItem="Iul-yf-5Ss" secondAttribute="trailingMargin" id="aSg-dU-wz3"/>
-                            <constraint firstItem="7Ec-VS-PLM" firstAttribute="trailing" secondItem="Iul-yf-5Ss" secondAttribute="trailingMargin" id="atz-lW-3mM"/>
-                            <constraint firstItem="yYf-7h-7NK" firstAttribute="top" secondItem="MTv-bq-tNu" secondAttribute="bottom" constant="8" id="bLz-eS-Ewh"/>
-                            <constraint firstItem="WYL-16-3cy" firstAttribute="leading" secondItem="Iul-yf-5Ss" secondAttribute="leadingMargin" id="eLa-09-v3u"/>
-                            <constraint firstItem="wrX-GN-kV2" firstAttribute="leading" secondItem="Iul-yf-5Ss" secondAttribute="leadingMargin" id="mDM-M7-V8f"/>
-                            <constraint firstItem="104-Zg-Tjy" firstAttribute="top" secondItem="7Ec-VS-PLM" secondAttribute="bottom" constant="356" id="mKZ-LX-eH8"/>
-                            <constraint firstItem="MTv-bq-tNu" firstAttribute="leading" secondItem="Iul-yf-5Ss" secondAttribute="leadingMargin" id="pQv-zd-gDg"/>
-                            <constraint firstItem="7Ec-VS-PLM" firstAttribute="leading" secondItem="Iul-yf-5Ss" secondAttribute="leadingMargin" id="q73-Qt-Gon"/>
-                            <constraint firstItem="yYf-7h-7NK" firstAttribute="trailing" secondItem="Iul-yf-5Ss" secondAttribute="trailingMargin" id="xkE-jh-YVm"/>
+                            <constraint firstItem="WYL-16-3cy" firstAttribute="trailing" secondItem="Iul-yf-5Ss" secondAttribute="trailingMargin" id="BKA-dB-hHg"/>
+                            <constraint firstItem="wrX-GN-kV2" firstAttribute="trailing" secondItem="Iul-yf-5Ss" secondAttribute="trailingMargin" id="BYH-oz-7Bm"/>
+                            <constraint firstItem="MTv-bq-tNu" firstAttribute="top" secondItem="WYL-16-3cy" secondAttribute="bottom" constant="8" id="Msr-PP-WUr"/>
+                            <constraint firstItem="WYL-16-3cy" firstAttribute="leading" secondItem="Iul-yf-5Ss" secondAttribute="leadingMargin" id="NSx-4c-HWq"/>
+                            <constraint firstItem="yYf-7h-7NK" firstAttribute="top" secondItem="MTv-bq-tNu" secondAttribute="bottom" constant="8" id="Ngv-x4-3Rd"/>
+                            <constraint firstItem="WYL-16-3cy" firstAttribute="top" secondItem="wrX-GN-kV2" secondAttribute="bottom" constant="8" id="OR1-QE-oeL"/>
+                            <constraint firstItem="wrX-GN-kV2" firstAttribute="leading" secondItem="Iul-yf-5Ss" secondAttribute="leadingMargin" id="P5A-19-ioA"/>
+                            <constraint firstItem="wrX-GN-kV2" firstAttribute="top" secondItem="kQP-5d-Gq5" secondAttribute="bottom" constant="8" id="Yl8-Jn-yzo"/>
+                            <constraint firstItem="MTv-bq-tNu" firstAttribute="trailing" secondItem="Iul-yf-5Ss" secondAttribute="trailingMargin" id="Ztd-SZ-LuL"/>
+                            <constraint firstItem="MTv-bq-tNu" firstAttribute="leading" secondItem="Iul-yf-5Ss" secondAttribute="leadingMargin" id="aGW-Y7-JCL"/>
+                            <constraint firstItem="7Ec-VS-PLM" firstAttribute="top" secondItem="yYf-7h-7NK" secondAttribute="bottom" constant="42" id="crS-CA-aQv"/>
+                            <constraint firstItem="yYf-7h-7NK" firstAttribute="leading" secondItem="Iul-yf-5Ss" secondAttribute="leadingMargin" id="h2Z-bi-wID"/>
+                            <constraint firstItem="7Ec-VS-PLM" firstAttribute="trailing" secondItem="Iul-yf-5Ss" secondAttribute="trailingMargin" id="ijx-eb-u9d"/>
+                            <constraint firstItem="7Ec-VS-PLM" firstAttribute="leading" secondItem="Iul-yf-5Ss" secondAttribute="leadingMargin" id="p3Q-OC-HZT"/>
+                            <constraint firstItem="yYf-7h-7NK" firstAttribute="trailing" secondItem="Iul-yf-5Ss" secondAttribute="trailingMargin" id="rlV-Zw-rCg"/>
                         </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="authorTextField" destination="WYL-16-3cy" id="0NE-bL-P2i"/>
                         <outlet property="categoryField" destination="yYf-7h-7NK" id="U0o-e2-L7k"/>
@@ -230,6 +230,7 @@
                         <outlet property="titleTextField" destination="wrX-GN-kV2" id="ZmN-TC-BDu"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c14-GZ-5Yu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4318" y="-873"/>
         </scene>
