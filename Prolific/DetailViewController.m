@@ -95,11 +95,11 @@
                                  @"title":self.book.title,
                                  @"url":self.book.url};
     [self.sessionManager PUT:[NSString stringWithFormat:@"/5764751072b55d00097eab85%@",self.book.url] parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-        //        NSLog(@"Response Object %@", (NSDictionary*)responseObject);
+        //NSLog(@"Response Object %@", (NSDictionary*)responseObject);
         NSString *updatedString =  [self formatDateForAString:[responseObject valueForKey:@"lastCheckedOut"]];
         self.lastCheckedBy.text = [NSString stringWithFormat:@"%@ @ %@",[responseObject valueForKey:@"lastCheckedOutBy"], updatedString];
     }  failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"\n ERROR \n %@",error.userInfo);
+       // NSLog(@"\n ERROR \n %@",error.userInfo);
         [UIAlertController showAlertInViewController:self
                                            withTitle:@"Error"
                                              message:@"There's an error in check out. Please try again"

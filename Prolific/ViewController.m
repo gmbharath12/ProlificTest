@@ -119,8 +119,8 @@
                                    otherButtonTitles:nil
                                     tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
                                         if (buttonIndex == 1) {
-                                            NSLog(@"YES");
-                                            NSLog(@"Delete All");
+//                                            NSLog(@"YES");
+//                                            NSLog(@"Delete All");
                                             if (!self.sessionManager) {
                                                 self.sessionManager =   [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kBaseURL]];
                                                 self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -128,12 +128,12 @@
                                             }
                                             NSString *relativeURL = @"/clean";
                                             [self.sessionManager DELETE:[NSString stringWithFormat:@"/5764751072b55d00097eab85%@",relativeURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-                                                NSLog(@"Response Object %@", (NSDictionary*)responseObject);
+//                                                NSLog(@"Response Object %@", (NSDictionary*)responseObject);
                                                 [self.dataArray removeAllObjects];
                                                 [self.booksTableView reloadData];
                                                 [self hideClearButton:YES];
                                             }  failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                                NSLog(@"\n ERROR \n %@",error.userInfo);
+//                                                NSLog(@"\n ERROR \n %@",error.userInfo);
                                                 [self showAlertViewWithTitle:@"Error" message:@"There's an error in deleting all book entries. Please try again"];
                                             }];
                                         }

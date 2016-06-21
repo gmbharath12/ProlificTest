@@ -42,7 +42,7 @@
                                  };
     NSString *relativeURL = @"/books/";
     [self.sessionManager POST:[NSString stringWithFormat:@"/5764751072b55d00097eab85%@",relativeURL] parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"Response Object %@", (NSDictionary*)responseObject);
+//        NSLog(@"Response Object %@", (NSDictionary*)responseObject);
         [UIAlertController showAlertInViewController:self
                                            withTitle:@""
                                              message:@"Book sucessfully added"
@@ -85,7 +85,6 @@
         self.addedBooks = [NSMutableArray new];
     }
     [self.addedBooks addObject:book];
-
 }
 
 - (void)doneButtonAction:(id)sender {

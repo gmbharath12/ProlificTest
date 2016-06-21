@@ -31,7 +31,7 @@
     {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         id jsonObjects = [NSJSONSerialization JSONObjectWithData:bookData options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"%@",jsonObjects);
+//        NSLog(@"%@",jsonObjects);
         dataArray = [ServiceManager parseJsonObject:jsonObjects];
     }
     
@@ -41,7 +41,6 @@
 
 + (NSMutableArray *)parseJsonObject:(id)books
 {
-    
     NSMutableArray *dataArray = [NSMutableArray new];
     for (id bookObject in books)
     {
