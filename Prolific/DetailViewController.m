@@ -56,7 +56,8 @@
                                    UIActivityTypeAddToReadingList,
                                    UIActivityTypeMail,
                                    UIActivityTypePostToFlickr,
-                                   UIActivityTypePostToVimeo];
+                                   UIActivityTypePostToVimeo,
+                                   ];
     activityController.excludedActivityTypes = excludeActivities;
     [self presentViewController:activityController animated:YES completion:nil];
 }
