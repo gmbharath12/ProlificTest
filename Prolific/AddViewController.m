@@ -31,7 +31,10 @@
     }
 }
 
+//post web service call. posts a new book
 - (void)post {
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     self.sessionManager =   [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kBaseURL]];
     self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
     self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -43,6 +46,7 @@
     NSString *relativeURL = @"/books/";
     [self.sessionManager POST:[NSString stringWithFormat:@"/5764751072b55d00097eab85%@",relativeURL] parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 //        NSLog(@"Response Object %@", (NSDictionary*)responseObject);
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         [UIAlertController showAlertInViewController:self
                                            withTitle:@""
                                              message:@"Book sucessfully added"
@@ -56,6 +60,7 @@
         self.publisherTextField.text = @"";
         self.titleTextField.text = @"";
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         [UIAlertController showAlertInViewController:self
                                            withTitle:@"Error"
                                              message:[error.userInfo description]
@@ -71,6 +76,7 @@
     return YES;
 }
 
+//parses new response object and updates the table view in MainViewController
 - (void)parseResponseDictionary:(NSDictionary*)responseObject {
     Book *book  = [[Book alloc] init];
     book.author = [responseObject valueForKey:@"author"];
@@ -87,7 +93,9 @@
     [self.addedBooks addObject:book];
 }
 
+//
 - (void)doneButtonAction:(id)sender {
+    //resigns first responder for eg,keyboard
     [self.view endEditing:YES];
     if ([[self addedBooks] count] > 0) {
         [self.delegate newBooksArray:self.addedBooks];

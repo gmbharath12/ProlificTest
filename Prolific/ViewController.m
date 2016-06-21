@@ -39,6 +39,7 @@
     }
 }
 
+//adds Add and Clear bar button items on navigation bar
 - (void)additionalSetUp {
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.title = @"Books";
@@ -54,7 +55,7 @@
 
 
 #pragma mark Fetch Data
-// GET request
+// GET request uses iOS built in api
 - (void) fetchData {
     [ServiceManager requestBookData:^(NSMutableArray *bookData, NSError *error) {
          dispatch_async(dispatch_get_main_queue(), ^{
@@ -71,7 +72,6 @@
              }
          });
      }];
-    
 }
 
 #pragma mark Show Alert View
@@ -110,6 +110,7 @@
 
 #pragma mark EditAction
 - (void)clearAllAction:(UIBarButtonItem*)sender {
+    
     //clear all items.
         [UIAlertController showAlertInViewController:self
                                            withTitle:@"Clear All"
@@ -121,6 +122,7 @@
                                         if (buttonIndex == 1) {
 //                                            NSLog(@"YES");
 //                                            NSLog(@"Delete All");
+                                            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
                                             if (!self.sessionManager) {
                                                 self.sessionManager =   [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kBaseURL]];
                                                 self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -131,9 +133,11 @@
 //                                                NSLog(@"Response Object %@", (NSDictionary*)responseObject);
                                                 [self.dataArray removeAllObjects];
                                                 [self.booksTableView reloadData];
+                                                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                                                 [self hideClearButton:YES];
                                             }  failure:^(NSURLSessionDataTask *task, NSError *error) {
 //                                                NSLog(@"\n ERROR \n %@",error.userInfo);
+                                                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                                                 [self showAlertViewWithTitle:@"Error" message:@"There's an error in deleting all book entries. Please try again"];
                                             }];
                                         }
@@ -163,6 +167,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         //web service call
         Book *lbook = self.dataArray[indexPath.row];
         if (!self.sessionManager) {
@@ -176,8 +181,10 @@
                 if (self.dataArray.count == 0) {
                     [self hideClearButton:YES];
                 }
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             }   failure:^(NSURLSessionDataTask *task, NSError *error) {
-                NSLog(@"\n ERROR \n %@",error.userInfo);
+                //NSLog(@"\n ERROR \n %@",error.userInfo);
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                 [self showAlertViewWithTitle:@"Error" message:@"There's an error in deleting a book entry. Please try again"];
             }];
     }

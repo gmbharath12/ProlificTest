@@ -7,7 +7,6 @@
 //
 
 #import "ServiceManager.h"
-#import "AppDelegate.h"
 #import "Book.h"
 
 @implementation ServiceManager

@@ -12,7 +12,6 @@
 @implementation DetailViewController
 
 - (void)viewDidLoad {
-    //\ToDo: Update constraints when one of them is null?
     self.bookTitle.text = (!([[self book] title] == (NSString*)[NSNull null])) ? [[self book] title] : nil;
     self.author.text = (!([[self book] author] == (NSString*)[NSNull null])) ? [NSString stringWithFormat:@"Author: %@",[[self book] author]] : nil;
     self.publisher.text = (!([[self book] publisher] == (NSString*)[NSNull null])) ? [NSString stringWithFormat:@"Publisher: %@",[[self book] publisher]] : nil;
@@ -25,7 +24,7 @@
     }
 }
 
-
+//date returned from the server is formatted as per specs eg: Jun 21, 2016 3:58:08 AM
 - (NSString*)formatDateForAString:(NSString*)checkedOutAt {
     if (!dateFormatter) {
         dateFormatter = [[NSDateFormatter alloc] init];
@@ -36,7 +35,7 @@
     [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
     [dateFormatter setLocale:[NSLocale currentLocale]];
     NSDate *date = [dateFormatter dateFromString:dateString];
-    [dateFormatter setDateFormat:@"MMM dd, yyyy HH:mm"];
+    [dateFormatter setDateFormat:@"MMM dd, yyyy h:mm:ss aaa"];//MMM dd, yyyy h:mm:ss aaa
     NSString *updatedString = [dateFormatter stringFromDate:date];
     return updatedString;
 }
@@ -78,6 +77,7 @@
 
 #pragma mark CheckOutViewControllerDelegate
 - (void)checkOutUserName:(NSString*)userName {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     if (!dateFormatter) {
         dateFormatter=[[NSDateFormatter alloc] init];
     }
@@ -96,10 +96,12 @@
                                  @"url":self.book.url};
     [self.sessionManager PUT:[NSString stringWithFormat:@"/5764751072b55d00097eab85%@",self.book.url] parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         //NSLog(@"Response Object %@", (NSDictionary*)responseObject);
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         NSString *updatedString =  [self formatDateForAString:[responseObject valueForKey:@"lastCheckedOut"]];
         self.lastCheckedBy.text = [NSString stringWithFormat:@"%@ @ %@",[responseObject valueForKey:@"lastCheckedOutBy"], updatedString];
     }  failure:^(NSURLSessionDataTask *task, NSError *error) {
        // NSLog(@"\n ERROR \n %@",error.userInfo);
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         [UIAlertController showAlertInViewController:self
                                            withTitle:@"Error"
                                              message:@"There's an error in check out. Please try again"
